@@ -8,6 +8,12 @@ import { type } from "os";
 const productstRouter = Router()
 const path = "../managers/productos.json"
 const pathCartFile = "../managers/cart.json"
+
+//importar instancia de server
+import io from "../app.js"
+
+import { Socket } from "socket.io";
+
 //rutas
 
 
@@ -22,8 +28,36 @@ productstRouter.get("/api/products", (req, res)=>{
     //mostrar los productos
 
     //res.send(productosJson)
-    // se comenta mientars se hace ruta add to cart para lectura facil console.log(productosJson)
+    // se comenta mientars se hace ruta add to cart para lectura facil console.
+    //console.log(productosJson)
+
+    io.on("connection", (socket)=>{
+
+
+        socket.emit("conexion", "Servidor backend conectado")
+        console.log("Cliente conectado")
+        //escuchar evento crear producto
+        
+
+        socket.on("render", (data)=>{
+            console.log(data)
+
+            //evento para renderizar
+            socket.emit("renderToClient", productosJson)
+        })
+        
+
+    })
+
+ 
     res.render("index", {productosJson})
+
+
+                    
+ 
+
+    
+                 
     
 })
 //agregar al carrito
@@ -50,8 +84,9 @@ productstRouter.post("/api/products/addToCart", (req, res)=>{
         console.log(consultaCarrito)
         
     }
-    
+
     res.redirect("/api/products")
+   
         
 })
 
@@ -75,7 +110,7 @@ productstRouter.get("/api/products/addToCart/view", (req, res)=>{
         //console.log(productoCarrito)
         
         //console.log(carrito)
-        
+      
         
         
     }
@@ -179,7 +214,14 @@ productstRouter.post("/api/products/", (req, res)=>{
     productoInstancia.addPproducts(nombre, precio, descripcion, thumbnail, sku, stock)
     productoInstancia.saveToFile()
 
+
+    io.emit("crearProducto", "Producto creado con éxito")
     res.send(200)
+    
+    //evento crear producto
+    
+
+
 })
 
 

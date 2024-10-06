@@ -39,25 +39,24 @@
     </style>
 </head>
 <body>
+    <h1>Archivo index</h1>
     {{#each productosJson}}
-    <div class="card"> 
-        <h3 name = "nombre">Nombre: {{this.nombre}}</h3>
-        <p>precio: {{this.precio}}</p>
-        <p>descripcion: {{this.descripcion}}</p>
-        <p>Imagen: {{this.thumbnail}}</p>
-        <p>sku: {{this.sku}}</p>
-        <p>stock: {{this.stock}}</p>
-        <p>id: {{this.prodcutoId}}</p>
-
-        <form action="/api/products/addToCart" method="post">            
-        <button class="button primary-button" type="submit" name = "added"value = "{{this.prodcutoId}}" type="hidden">Añadir al carrito</button>
-
-        <button class="button secundary-button" type="submit" name = "showCart"value = "true" type="hidden"><a href="http://localhost:8080/api/products/addToCart/view">ver productos</a></button>
-
-        
-        </form>
-        
-    </div>
+        <div class="card">
+            <p>{{nombre}}</p>
+            <p>{{precio}}</p>
+            <p>{{descripcion}}</p>
+            <p>{{thumbnail}}</p>
+            <p>{{sku}}</p>
+            <p>{{stock}}</p>
+            <p>{{prodcutoId}}</p>
+            <button class="primary-button button">Eliminar</button>
+        </div>
     {{/each}}
+
+
+    <!---Sckets-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+
+    <script src="../js/main.js"></script>
 </body>
 </html>

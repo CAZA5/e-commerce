@@ -1,6 +1,6 @@
 [
   {
-    "nombre": "5555",
+    "nombre": "reus",
     "precio": 40000,
     "descripcion": "7500",
     "thumbnail": "takamine.png",
@@ -9,7 +9,7 @@
     "prodcutoId": 1
   },
   {
-    "nombre": "5555",
+    "nombre": "reus",
     "precio": 40000,
     "descripcion": "7500",
     "thumbnail": "takamine.png",
@@ -18,30 +18,12 @@
     "prodcutoId": 2
   },
   {
-    "nombre": "5555",
+    "nombre": "reus",
     "precio": 40000,
     "descripcion": "7500",
     "thumbnail": "takamine.png",
     "sku": 10000156469,
     "stock": 8,
     "prodcutoId": 3
-  },
-  {
-    "nombre": "5555",
-    "precio": 40000,
-    "descripcion": "7500",
-    "thumbnail": "takamine.png",
-    "sku": 10000156469,
-    "stock": 8,
-    "prodcutoId": 4
-  },
-  {
-    "nombre": "5555",
-    "precio": 40000,
-    "descripcion": "7500",
-    "thumbnail": "takamine.png",
-    "sku": 10000156469,
-    "stock": 8,
-    "prodcutoId": 5
   }
 ]

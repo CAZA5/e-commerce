@@ -8,6 +8,10 @@ import cartRouteRouter from "./routes/cart.routes.js"
 const port = 8080
 const app = express()
 
+//scokets
+import {Server} from "socket.io"
+
+
 //bandelbars
 //configuración de handlebars
 app.engine("handlebars", exphbs.engine())
@@ -15,6 +19,8 @@ app.engine("handlebars", exphbs.engine())
 app.set("view engine", "handlebars")
 //ubicación de archivos handlebars
 app.set("views", "views")
+//archivos estaticos
+app.use(express.static("public"))
 
 //datos
 //recibir json
@@ -29,6 +35,13 @@ app.use("/", productstRouter);
 app.use("./", cartRouteRouter)
 
 //Mostrar en puerto 8080
-app.listen(port,()=>{
+let httpServer = app.listen(port,()=>{
     console.log(`http://localhost:8080/api/products`)
 })
+
+//instancia de server para socket
+const io = new Server(httpServer)
+
+
+export default io;
+
